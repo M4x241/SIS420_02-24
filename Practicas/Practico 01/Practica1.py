@@ -48,7 +48,7 @@ listVariables = [0,0]
 
 ErrorMin = 999999
 list_pesos = ordenarDatos(tabla,list_alturas)
-plt.scatter(list_alturas, list_pesos)
+
 
 
 # archivo excel
@@ -59,18 +59,15 @@ for i in range(-1000,1000):
     for j in range(-1000,1000):
         sumErrores = 0
         for d in range(len(list_alturas)):
-            resta = abs(list_pesos[d] - (list_alturas[d]*j/100 +i/100))
+            resta = (list_alturas[d]*j/100 +i/100)
             sumErrores += resta
-        sumErrores = sumErrores/100
+        sumErrores = abs(PromPesos[0]- sumErrores/100)
         if ErrorMin > sumErrores:
             ErrorMin = sumErrores
             listVariables = [i/100,j/100]
-            """print(i,j)
-            print(ErrorMin)"""
-        
-print("Acabo la Ejecucion")       
+print("Finaliza el ciclo")  
 print(listVariables)
-
+plt.scatter(list_alturas, list_pesos)
 m = listVariables[1]
 b = listVariables[0]
 
